@@ -13,8 +13,8 @@ icon = pygame.image.load("img/Стрелы")
 pygame.display.set_icon(icon)
 
 target_img = pygame.image.load("img/target.png")
-target_width = 50
-target_height = 50
+target_width = 80
+target_height = 80
 
 target_x = random.randint( 1, SCREEN_WIDTH - (target_width + 1))
 target_y = random.randint( 1, SCREEN_HEIGHT - (target_height + 1))
