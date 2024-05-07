@@ -48,7 +48,7 @@ avto_y = random.randint( 1, SCREEN_HEIGHT - (avto_height + 1))
 
 lampa_img = pygame.image.load("img/lampa.png")
 lampa_width = 300
-lampa_height = 212
+lampa_height = 213
 lampa_x = random.randint( 1, SCREEN_WIDTH - (lampa_width + 1))
 lampa_y = random.randint( 1, SCREEN_HEIGHT - (lampa_height + 1))
 
