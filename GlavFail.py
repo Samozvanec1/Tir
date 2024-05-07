@@ -45,6 +45,12 @@ avto_height = 212
 avto_x = random.randint( 1, SCREEN_WIDTH - (avto_width + 1))
 avto_y = random.randint( 1, SCREEN_HEIGHT - (avto_height + 1))
 
+avto_img = pygame.image.load("img/avto.png")
+avto_width = 300
+avto_height = 212
+avto_x = random.randint( 1, SCREEN_WIDTH - (avto_width + 1))
+avto_y = random.randint( 1, SCREEN_HEIGHT - (avto_height + 1))
+
 
 target_img = pygame.image.load("img/target.png")
 target_width = 80
