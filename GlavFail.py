@@ -46,6 +46,13 @@ avto_x = random.randint( 1, SCREEN_WIDTH - (avto_width + 1))
 avto_y = random.randint( 1, SCREEN_HEIGHT - (avto_height + 1))
 
 
+lampa_img = pygame.image.load("img/lampa.png")
+lampa_width = 300
+lampa_height = 212
+lampa_x = random.randint( 1, SCREEN_WIDTH - (lampa_width + 1))
+lampa_y = random.randint( 1, SCREEN_HEIGHT - (lampa_height + 1))
+
+
 target_img = pygame.image.load("img/target.png")
 target_width = 80
 target_height =105
@@ -54,8 +61,12 @@ target_y = random.randint( 1, SCREEN_HEIGHT - (target_height + 1))
 
 
 
+lampa_speed_x = random.choice([-1.5, 1.5])
+lampa_speed_y = random.choice([-1.5, 1.5])
+
 avto_speed_x = random.choice([-0.5, 0.5])
 avto_speed_y = random.choice([-0.5, 0.5])
+
 
 
 # Скорость и направление движения цели
@@ -97,6 +108,9 @@ while  running:
     avto_x += avto_speed_x
     avto_y += avto_speed_y
 
+    lampa_x += lampa_speed_x
+    lampa_y += lampa_speed_y
+
     # Проверяем, не вышла ли цель за пределы экрана
     if target_x < 0 or target_x > SCREEN_WIDTH - target_width:
         target_speed_x = -target_speed_x
@@ -107,6 +121,11 @@ while  running:
         avto_speed_x = -avto_speed_x
     if avto_y < 0 or avto_y > SCREEN_HEIGHT - avto_height:
         avto_speed_y = -avto_speed_y
+
+    if lampa_x < 0 or lampa_x > SCREEN_WIDTH - lampa_width:
+        lampa_speed_x = -lampa_speed_x
+    if lampa_y < 0 or lampa_y > SCREEN_HEIGHT - lampa_height:
+        lampa_speed_y = -lampa_speed_y
 
      # Проверяем состояние зеркальности и отображаем мишень
     if mirrored:
@@ -130,6 +149,7 @@ while  running:
     screen.blit(grib_img, (grib_x, grib_y))
     screen.blit(kust_img, (kust_x, kust_y))
     screen.blit(avto_img, (avto_x, avto_y))
+    screen.blit(lampa_img, (lampa_x, lampa_y))
 
     pygame.display.update()
 
