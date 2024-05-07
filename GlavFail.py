@@ -5,8 +5,8 @@ import random
 import pygame
 pygame.init()
 
-SCREEN_WIDTH = 880
-SCREEN_HEIGHT = 660
+SCREEN_WIDTH = 1000
+SCREEN_HEIGHT = 750
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 global text
 
@@ -19,24 +19,24 @@ dom_img = pygame.image.load("img/dom.png")
 dom_width = 285
 dom_height = 182
 dom_x = 300
-dom_y = 200
+dom_y = 280
 
 dino_img = pygame.image.load("img/dino.png")
 dino_width = 300
 dino_height = 156
-dino_x = 580
-dino_y = 504
+dino_x = 700
+dino_y = 595
 
 grib_img = pygame.image.load("img/grib.png")
 grib_width = 300
 grib_height = 406
 grib_x = -5
-grib_y = 263
+grib_y = 353
 
 kust_img = pygame.image.load("img/kust.png")
 kust_width = 300
 kust_height = 236
-kust_x = 570
+kust_x = 650
 kust_y = 80
 
 avto_img = pygame.image.load("img/avto.png")
@@ -44,6 +44,12 @@ avto_width = 300
 avto_height = 212
 avto_x = random.randint( 1, SCREEN_WIDTH - (avto_width + 1))
 avto_y = random.randint( 1, SCREEN_HEIGHT - (avto_height + 1))
+
+dzin_img = pygame.image.load("img/dzin.png")
+dzin_width = 300
+dzin_height = 466
+dzin_x = random.randint( 1, SCREEN_WIDTH - (dzin_width + 1))
+dzin_y = random.randint( 1, SCREEN_HEIGHT - (dzin_height + 1))
 
 
 lampa_img = pygame.image.load("img/lampa.png")
@@ -59,6 +65,9 @@ target_height =105
 target_x = random.randint( 1, SCREEN_WIDTH - (target_width + 1))
 target_y = random.randint( 1, SCREEN_HEIGHT - (target_height + 1))
 
+
+dzin_speed_x = random.choice([-1, 1])
+dzin_speed_y = random.choice([-1, 1])
 
 
 lampa_speed_x = random.choice([-1.5, 1.5])
@@ -108,8 +117,13 @@ while  running:
     avto_x += avto_speed_x
     avto_y += avto_speed_y
 
+
     lampa_x += lampa_speed_x
     lampa_y += lampa_speed_y
+
+    dzin_x += dzin_speed_x
+    dzin_y += dzin_speed_y
+
 
     # Проверяем, не вышла ли цель за пределы экрана
     if target_x < 0 or target_x > SCREEN_WIDTH - target_width:
@@ -122,10 +136,17 @@ while  running:
     if avto_y < 0 or avto_y > SCREEN_HEIGHT - avto_height:
         avto_speed_y = -avto_speed_y
 
+
     if lampa_x < 0 or lampa_x > SCREEN_WIDTH - lampa_width:
         lampa_speed_x = -lampa_speed_x
     if lampa_y < 0 or lampa_y > SCREEN_HEIGHT - lampa_height:
         lampa_speed_y = -lampa_speed_y
+
+    if dzin_x < 0 or dzin_x > SCREEN_WIDTH - dzin_width:
+            dzin_speed_x = -dzin_speed_x
+    if dzin_y < 0 or dzin_y > SCREEN_HEIGHT - dzin_height:
+            dzin_speed_y = -dzin_speed_y
+
 
      # Проверяем состояние зеркальности и отображаем мишень
     if mirrored:
@@ -150,6 +171,8 @@ while  running:
     screen.blit(kust_img, (kust_x, kust_y))
     screen.blit(avto_img, (avto_x, avto_y))
     screen.blit(lampa_img, (lampa_x, lampa_y))
+    screen.blit(dzin_img, (dzin_x, dzin_y))
+
 
     pygame.display.update()
 
